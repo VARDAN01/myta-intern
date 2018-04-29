@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	<link rel="stylesheet" href="css/demo.css"> <!-- Demo style -->
+  	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  	<script type="text/javascript" src="asset.js"></script>
+	<title>Log In &amp; Sign Up Form | CodyHouse</title>
+	<script type="text/javascript">
+		var data = `{
+  "gradesList": [
+    {
+      "name": "Grade 11",
+      "subjectList": [
+        {
+          "name": "Science",
+          "chapterList": [
+            {
+              "name": "Electric Charge",
+              "questionList": [
+                {
+                  "question": "What is charge?",
+                  "answer": "Electric Charge is that physical property of matter due to which the other matter experience a force when matters are placed in electromagnetic field."
+                },
+                {
+                  "question": " How much positive and negative charge is there in a cup of water?",
+                  "answer": "The number of molecules in one cup of water is (250/18) × 6.02 × 1023"
+                }
+              ]
+            }
+          ]
+        },
+{
+          "name": "Mathematics",
+          "chapterList": [
+            {
+              "name": "Equation of line",
+              "questionList": [
+                {
+                  "question": "What is the slope of x=0?",
+                  "answer": "Infinite"
+                },
+                {
+                  "question": " What is the slope of y=0?",
+                  "answer": "Zero"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Grade 12",
+      "subjectList": [
+        {
+          "name": "Social Studies",
+          "chapterList": [
+            {
+              "name": "Rulers of USA",
+              "questionList": [
+                {
+                  "question": "Who controlled the colony of New York before the English?",
+                  "answer": "The Dutch"
+                },
+                {
+                  "question": " Who was the founder of New York and New Jersey?",
+                  "answer": "The Duke of York"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}`;
+        function codeAddress() {
+        	// console.log(window.localStorage['login']);
+            if( window.localStorage['login'] == 1 )
+            {
+            	document.getElementById('content2').innerHTML = data;
+            	document.getElementById('content').innerHTML = `
+		<div class="cd-main-header__logo"><a href="#0"><img src="img/cd-logo.svg" alt="Logo"></a></div>
+
+		<nav class="cd-main-nav js-main-nav">
+			<ul class="cd-main-nav__list js-signin-modal-trigger">
+				<!-- inser more links here -->
+				<li><a class="cd-main-nav__item cd-main-nav__item--signin" href="#0" onclick="logout()">Sign in</a></li>
+				
+			</ul>
+		</nav>`;
+
+            }
+            else if( (window.localStorage['login'] == 0) || (window.localStorage['login'] == 'undefined') || window.localStorage['login'] == undefined ){
+            	document.getElementById('content').innerHTML = `
+		<div class="cd-main-header__logo"><a href="#0"><img src="img/cd-logo.svg" alt="Logo"></a></div>
+
+		<nav class="cd-main-nav js-main-nav">
+			<ul class="cd-main-nav__list js-signin-modal-trigger">
+				<!-- inser more links here -->
+				<li><a class="cd-main-nav__item cd-main-nav__item--signin" href="#0" data-signin="login" onclick="signinModal()">Sign in</a></li>
+				<li><a class="cd-main-nav__item cd-main-nav__item--signup" href="#0" data-signin="signup" onclick="signupModal()">Sign up</a></li>
+			</ul>
+		</nav>`;
+            }
+            var parsedjson = JSON.parse(data);
+        }
+        function logout()
+        {
+        	localStorage.clear;
+        }
+        function signinModal() {
+        	$('#signin').modal('show');
+
+        	// body...
+        }
+        function signupModal() {
+        	$('#signup').modal('show');
+
+        	// body...
+        }
+        window.onload = codeAddress;
+    </script>
+</head>
+<body>
+	<!-- Resource JavaScript -->
+	<header class="cd-main-header" id="content">
+		
+	</header>
+	<section id="content2">
+		
+	</section>
+		 <div class="modal fade" id="signin">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Login Form</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <input type="text" name="login_username" id="login_username" placeholder="Username">
+          <input type="password" name="login_password" id="login_password" placeholder="Password">
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" onclick="login()" >Login</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div> <div class="modal fade" id="signup">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Signup Form</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          
+          <input type="text" name="login_username" id="signup_username" placeholder="Username">
+          <input type="password" name="login_password" id="signup_password" placeholder="Password">
+         
+        </div>
+        
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" onclick="signup()">Signup</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+</body>
+</html>
